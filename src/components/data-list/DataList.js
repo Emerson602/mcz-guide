@@ -6,7 +6,7 @@ export default function CustomersList() {
   const [erro, setErro] = useState("");
 
   useEffect(() => {
-    async function buscarDados() {
+    async function getData() {
       try {
         const token = sessionStorage.getItem("token");
 
@@ -22,14 +22,14 @@ export default function CustomersList() {
         setDados(data);
       } catch (error) {
         console.error(
-          "❌ Erro durante requisição:",
+          "Erro durante requisição:",
           error.response?.data || error.message
         );
         setErro("Erro ao carregar dados.");
       }
     }
 
-    buscarDados();
+    getData();
   }, []);
 
   if (erro) {
